@@ -36,6 +36,8 @@ public class AlienDictionary {
 	}
 
 	private WordEnhanced cerca(String parolaAliena) {
+		
+		
 
 		if (dizionario.contains(new WordEnhanced(parolaAliena, ""))) {
 			int indice = dizionario.indexOf(new WordEnhanced(parolaAliena, ""));

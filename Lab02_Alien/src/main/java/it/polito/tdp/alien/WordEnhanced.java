@@ -14,10 +14,32 @@ public class WordEnhanced {
 
 	@Override
 	public boolean equals(Object obj) {
+		
+		WordEnhanced alieno = (WordEnhanced) obj; // parola alien
+		String parola= alieno.alienWord;
+		
+		
+		if(parola.contains("?"))
+		{
+			
+			int i=parola.indexOf("?");
+			
+			String nuovaAltro= parola.replace('?', ' ').trim();
+			
+			String nuova=this.alienWord.replace(alienWord.charAt(i), ' ').trim();
+			
+			
+			if(nuova.compareTo(nuovaAltro)==0)
+				return true;
+			
+			return false;
+			
+			
+		}
 
-		WordEnhanced alieno = (WordEnhanced) obj; // parola aliena
+		
 
-		if (this.alienWord.compareTo(alieno.alienWord) == 0)
+		if (this.alienWord.compareTo(parola) == 0)
 			return true;
 
 		return false;
