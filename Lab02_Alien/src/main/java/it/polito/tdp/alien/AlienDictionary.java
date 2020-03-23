@@ -37,10 +37,11 @@ public class AlienDictionary {
 
 	private WordEnhanced cerca(String parolaAliena) {
 		
-		
+		String parolaMinuscola= parolaAliena.toLowerCase();
+		WordEnhanced temp= new WordEnhanced(parolaMinuscola, "");
 
-		if (dizionario.contains(new WordEnhanced(parolaAliena, ""))) {
-			int indice = dizionario.indexOf(new WordEnhanced(parolaAliena, ""));
+		if (dizionario.contains(temp)) {
+			int indice = dizionario.indexOf(temp);
 			WordEnhanced w = dizionario.get(indice);
 
 			return w;

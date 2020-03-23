@@ -2,6 +2,17 @@ package it.polito.tdp.alien;
 
 import java.util.*;
 
+
+
+//MODIFICHE DA FARE: FARE IN MODO DI SALVARE SUBITO LISTA DI TRADUZIONI, SE VIENE RIMESSA PAROLA E ALTRE TRADUZIONI
+//QUESTE VENGONO RIMPOSTATE
+
+
+
+
+
+
+
 public class WordEnhanced {
 
 	private String alienWord;
@@ -16,7 +27,7 @@ public class WordEnhanced {
 	public boolean equals(Object obj) {
 		
 		WordEnhanced alieno = (WordEnhanced) obj; // parola alien
-		String parola= alieno.alienWord;
+		String parola= alieno.alienWord.toLowerCase();
 		
 		
 		if(parola.contains("?"))
@@ -26,10 +37,10 @@ public class WordEnhanced {
 			
 			String nuovaAltro= parola.replace('?', ' ').trim();
 			
-			String nuova=this.alienWord.replace(alienWord.charAt(i), ' ').trim();
+			String nuova=this.alienWord.toLowerCase().replace(alienWord.charAt(i), ' ').trim();
 			
 			
-			if(nuova.compareTo(nuovaAltro)==0)
+			if(nuova.equals(nuovaAltro))
 				return true;
 			
 			return false;
@@ -39,7 +50,7 @@ public class WordEnhanced {
 
 		
 
-		if (this.alienWord.compareTo(parola) == 0)
+		if (this.alienWord.toLowerCase().equals(parola))
 			return true;
 
 		return false;
@@ -48,6 +59,7 @@ public class WordEnhanced {
 
 	public void aggiungiTraduzione(String translation) {
 
+		
 		if (!traduzioni.contains(translation)) {
 			this.traduzioni.add(translation);
 

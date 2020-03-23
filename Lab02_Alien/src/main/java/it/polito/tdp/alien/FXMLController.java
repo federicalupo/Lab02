@@ -42,7 +42,9 @@ public class FXMLController {
 	@FXML
 	void doTranslate(ActionEvent event) {
 
-		String inserimento = txtInserisci.getText().toLowerCase();
+		
+		String inserimento= txtInserisci.getText();
+	//	String inserimento = txtInserisci.getText().toLowerCase(); //PERò L'OUTPUT SARà MINUSCOLO, NON VA BENE
 
 		StringTokenizer st = new StringTokenizer(inserimento, " ");
 		// conto tokens subito!
@@ -53,7 +55,7 @@ public class FXMLController {
 
 		// se conto tokens qui, non è corretto
 
-		if (valoriCorretti(parolaAliena)) {
+	//	if (valoriCorretti(parolaAliena)) { TOLGO PERCHè NELLA PAROLA DI CUI SI VUOLE TRADUZIONE CI PUO ESSERE?
 
 			if (cont == 1) // un elemento -> traduzione
 
@@ -94,16 +96,18 @@ public class FXMLController {
 
 			}
 
-		} else {
+	//	} else {
 			txtRisultato.setText("Testo inserito nel formato sbagliato \n");
-		}
+	//	}
 
 	}
 
 	private boolean valoriCorretti(String controllare) {
+		
+		String daControllare= controllare.toLowerCase();
 
-		for (int i = 0; i < controllare.length(); i++) {
-			char c = controllare.charAt(i);
+		for (int i = 0; i < daControllare.length(); i++) {
+			char c = daControllare.charAt(i);
 			if (!Character.isLetter(c)) {
 
 				return false; // appena non va bene, esce
