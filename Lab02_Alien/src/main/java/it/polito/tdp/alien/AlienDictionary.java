@@ -37,7 +37,7 @@ public class AlienDictionary {
 
 	private WordEnhanced cerca(String parolaAliena) {
 		
-		String parolaMinuscola= parolaAliena.toLowerCase();
+		String parolaMinuscola= parolaAliena;
 		WordEnhanced temp= new WordEnhanced(parolaMinuscola, "");
 
 		if (dizionario.contains(temp)) {

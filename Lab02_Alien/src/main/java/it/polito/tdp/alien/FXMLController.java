@@ -104,7 +104,7 @@ public class FXMLController {
 
 	private boolean valoriCorretti(String controllare) {
 		
-		String daControllare= controllare.toLowerCase();
+		String daControllare= controllare;
 
 		for (int i = 0; i < daControllare.length(); i++) {
 			char c = daControllare.charAt(i);

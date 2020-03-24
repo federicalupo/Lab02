@@ -27,7 +27,7 @@ public class WordEnhanced {
 	public boolean equals(Object obj) {
 		
 		WordEnhanced alieno = (WordEnhanced) obj; // parola alien
-		String parola= alieno.alienWord.toLowerCase();
+		String parola= alieno.alienWord;
 		
 		
 		if(parola.contains("?"))
@@ -37,7 +37,7 @@ public class WordEnhanced {
 			
 			String nuovaAltro= parola.replace('?', ' ').trim();
 			
-			String nuova=this.alienWord.toLowerCase().replace(alienWord.charAt(i), ' ').trim();
+			String nuova=this.alienWord.replace(alienWord.charAt(i), ' ').trim();
 			
 			
 			if(nuova.equals(nuovaAltro))
@@ -50,7 +50,7 @@ public class WordEnhanced {
 
 		
 
-		if (this.alienWord.toLowerCase().equals(parola))
+		if (this.alienWord.equals(parola))
 			return true;
 
 		return false;
