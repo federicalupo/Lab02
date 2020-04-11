@@ -12,8 +12,12 @@ public class AlienDictionary {
 
 	public void addWord(String alienWord, String translation) {
 
-		if (cerca(alienWord) != null) {
-			cerca(alienWord).aggiungiTraduzione(translation);
+		if (cerca(alienWord).size() > 0) {
+			// sicuramente cerca(alienWord) ha o un componente o 0
+
+			WordEnhanced w = cerca(alienWord).get(0);
+
+			w.aggiungiTraduzione(translation);
 
 			return; // esci
 		}
@@ -25,29 +29,71 @@ public class AlienDictionary {
 
 	public String translateWord(String alienWord) {
 
-		if (cerca(alienWord) != null) {
-			WordEnhanced w = cerca(alienWord);
+		if (cerca(alienWord).size()>0) {
+			List<WordEnhanced> w = cerca(alienWord);
 
-			return w.elencoTraduzioni();
+			String s = "";
+
+			for (WordEnhanced we : w) {
+				s += we.elencoTraduzioni();
+
+			}
+			return s;
 		}
 
 		return null;
 
 	}
 
-	private WordEnhanced cerca(String parolaAliena) {
+	private List<WordEnhanced> cerca(String parolaAliena) {
+
+		List<WordEnhanced> listaCerca = new LinkedList<>();
+
+		if (!parolaAliena.contains("?")) {
+
+			WordEnhanced temp = new WordEnhanced(parolaAliena, "");
+
+			if (dizionario.contains(temp)) {
+				int indice = dizionario.indexOf(temp);
+				WordEnhanced w = dizionario.get(indice);
+				listaCerca.add(w);
+
+				return listaCerca;
+			}
+
 		
-		String parolaMinuscola= parolaAliena;
-		WordEnhanced temp= new WordEnhanced(parolaMinuscola, "");
+		} else {
+			int nPunti = 0;
+			// devo essere sicura ci sia un "?"
+			for (int i = 0; i < parolaAliena.length(); i++) {
 
-		if (dizionario.contains(temp)) {
-			int indice = dizionario.indexOf(temp);
-			WordEnhanced w = dizionario.get(indice);
+				if (parolaAliena.charAt(i) == '?')
+					nPunti++;
 
-			return w;
+			}
+
+			if (nPunti == 1) {
+
+				int indice = parolaAliena.indexOf("?");
+				String nuovaAltro = parolaAliena.replace('?', ' ').trim();
+
+				for (WordEnhanced w : dizionario) { // equals diventa difficile
+
+					String nuova = w.getAlienWord().replace(w.getAlienWord().charAt(indice), ' ').trim();
+
+					if (nuova.equals(nuovaAltro)) {
+						listaCerca.add(w);
+
+					}
+
+				}
+				return listaCerca;
+
+			}
+
+			
 		}
-
-		return null;
+		return listaCerca;
 
 	}
 

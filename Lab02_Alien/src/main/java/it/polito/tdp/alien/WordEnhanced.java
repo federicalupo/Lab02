@@ -4,15 +4,6 @@ import java.util.*;
 
 
 
-//MODIFICHE DA FARE: FARE IN MODO DI SALVARE SUBITO LISTA DI TRADUZIONI, SE VIENE RIMESSA PAROLA E ALTRE TRADUZIONI
-//QUESTE VENGONO RIMPOSTATE
-
-
-
-
-
-
-
 public class WordEnhanced {
 
 	private String alienWord;
@@ -28,26 +19,6 @@ public class WordEnhanced {
 		
 		WordEnhanced alieno = (WordEnhanced) obj; // parola alien
 		String parola= alieno.alienWord;
-		
-		
-		if(parola.contains("?"))
-		{
-			
-			int i=parola.indexOf("?");
-			
-			String nuovaAltro= parola.replace('?', ' ').trim();
-			
-			String nuova=this.alienWord.replace(alienWord.charAt(i), ' ').trim();
-			
-			
-			if(nuova.equals(nuovaAltro))
-				return true;
-			
-			return false;
-			
-			
-		}
-
 		
 
 		if (this.alienWord.equals(parola))
@@ -77,5 +48,13 @@ public class WordEnhanced {
 		return s;
 
 	}
+
+	public String getAlienWord() {
+		return alienWord;
+	}
+	
+	
+	
+	
 
 }
