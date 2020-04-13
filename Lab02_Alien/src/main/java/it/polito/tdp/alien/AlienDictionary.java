@@ -75,11 +75,17 @@ public class AlienDictionary {
 			if (nPunti == 1) {
 
 				int indice = parolaAliena.indexOf("?");
-				String nuovaAltro = parolaAliena.replace('?', ' ').trim();
+				String nuovaAltro = parolaAliena.replace('?', ' ');
+				
 
 				for (WordEnhanced w : dizionario) { // equals diventa difficile
+					
+					String nuova=w.getAlienWord().substring(0, indice)+" "+w.getAlienWord().substring(indice+1);
 
-					String nuova = w.getAlienWord().replace(w.getAlienWord().charAt(indice), ' ').trim();
+					//String nuova = w.getAlienWord().replace(w.getAlienWord().charAt(indice), ' ');
+					//rimane " " perchè trim leva gli spazi iniziali non in mezzo
+					//attenzione: con replace non sostituisce solo la poszione "indice", ma tutte le lettere uguali a quella in posizione "indice" 
+					//==> meglio substring
 
 					if (nuova.equals(nuovaAltro)) {
 						listaCerca.add(w);
